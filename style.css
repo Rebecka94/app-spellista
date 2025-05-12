@@ -1,0 +1,16 @@
+header {
+display: flex;
+justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    width: 30%;
+}
+
+main {
+    width: 70%;
+}

@@ -10,12 +10,12 @@ export const musicLibrary = {
       Rock: {
         artists: {
           Queen: ["Bohemian Rhapsody", "Don't stop me now"],
-          Journey: ["Don´t stop beliving"],
+          Journey: ["Don't stop believing"],
         }
       },
       HipHop: {
         artists: {
-          "Travis Scott": ["Sicko Mode"],
+          Travis: ["Sicko Mode"],
           Drake: ["God's Plan"]
         }
       }

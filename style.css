@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a6b0a8, #88928c);
+    color: #eeeeee;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #b2bbb4, #8d978e);
+    color: #2c3e3a;
+    box-shadow: none;
+    letter-spacing: 1px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 550;
+}
+
+.container {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+aside, main {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #2c3e3a; 
+}
+
+
+aside {
+    width: 30%;
+}
+
+main {
+    width: 70%;
+}
+
+aside h2 {
+    margin-top: 0;
+    color: #2c3e3a;
+    font-weight: 400;
+}
+
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding: 0.6rem 1rem;
+    background-color: rgb(235, 235, 235);
+    border-radius: 6px;
+    color: #2c3e3a;
+    font-weight: 400;
+}
+
+.song-item button {
+    background-color: #b4c4b9;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.song-item button:hover {
+    background-color: #85988b;
+}
+
+#playlist-songs p {
+    margin: 0.7rem 0;
+    padding: 0.3rem 0.5rem;
+    background-color: rgba(255, 255, 255, 0.391);
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #b0b8af, #909c94);
+    color: #f0f0f0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    box-shadow: none;
+}
+
+#btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#btn-container button {
+    background-color: #b4c4b9;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #333;
+    margin-bottom: 20px;
+}
+#btn-container button:hover {
+    background-color: #85988b;
+} 
+

@@ -8,10 +8,14 @@ function main() {
 }
 
 function eventListeners() {
-  const genreBtn = document.getElementById("genre-btn");
-  if (genreBtn) {
-    genreBtn.addEventListener("click", showByGenre);
-  }
+  // Lyssna på genre-knappar
+  document.getElementById("pop-btn").addEventListener("click", () => showGenre("Pop"));
+  document.getElementById("rock-btn").addEventListener("click", () => showGenre("Rock"));
+  document.getElementById("hiphop-btn").addEventListener("click", () => showGenre("HipHop"));
+  document.getElementById("electronic-btn").addEventListener("click", () => showGenre("Electronic"));
+  document.getElementById("rnb-btn").addEventListener("click", () => showGenre("RnB"));
+  
+  // Befintliga knappar
   const artistBtn = document.getElementById("artist-btn");
   if (artistBtn) {
     artistBtn.addEventListener("click", showByArtist);
@@ -74,73 +78,111 @@ function addToPlaylist(songName) {
   playlist.appendChild(songItem);
 }
 
-function showByGenre() {
-  const getGenres = musicLibrary.music.genres;
+function showGenre(genreName) {
+  const genres = musicLibrary.music.genres;
   const songList = document.getElementById("song-list");
-  const genreBtn = document.getElementById("genre-btn");
-
-
-  if (genreBtn) {
-    songList.innerHTML = "";
-    for (const genre in getGenres) {
-      const genreTitle = document.createElement("h3");
-      genreTitle.textContent = genre;
-      songList.appendChild(genreTitle);
-      }
-    } 
+  
+  songList.innerHTML = "";
+  
+  const genreTitle = document.createElement("h3");
+  genreTitle.textContent = genreName;
+  songList.appendChild(genreTitle);
+  
+  const artists = genres[genreName].artists;
+  
+  for (const artist in artists) {
+    const artistItem = document.createElement("h4");
+    artistItem.textContent = artist;
+    songList.appendChild(artistItem);
+    
+    const songs = artists[artist];
+    
+    songs.forEach((song) => {
+      const songItem = document.createElement("div");
+      songItem.classList.add("song-item");
+      
+      const songTitle = document.createElement("span");
+      songTitle.textContent = song;
+      
+      const addButton = document.createElement("button");
+      addButton.textContent = "+";
+      addButton.addEventListener("click", () => addToPlaylist(song));
+      
+      songItem.appendChild(songTitle);
+      songItem.appendChild(addButton);
+      songList.appendChild(songItem);
+    });
   }
+}
 
-  function showByArtist() {
-    const genres = musicLibrary.music.genres;
+function showByArtist() {
+  const genres = musicLibrary.music.genres;
   const songList = document.getElementById("song-list");
-  const artistBtn = document.getElementById("artist-btn");
 
-  if (artistBtn) {
-    songList.innerHTML = "";
+  songList.innerHTML = "";
 
-    for (const genre in genres) {
-      const artists = genres[genre].artists;
+  for (const genre in genres) {
+    const artists = genres[genre].artists;
 
-      for (const artist in artists) {
-        const artistItem = document.createElement("h4");
-        artistItem.textContent = artist;
-        songList.appendChild(artistItem);
-      }
+    for (const artist in artists) {
+      const artistItem = document.createElement("h4");
+      artistItem.textContent = artist;
+      songList.appendChild(artistItem);
+      
+      const songs = artists[artist];
+      
+      songs.forEach((song) => {
+        const songItem = document.createElement("div");
+        songItem.classList.add("song-item");
+        
+        const songTitle = document.createElement("span");
+        songTitle.textContent = song;
+        
+        const addButton = document.createElement("button");
+        addButton.textContent = "+";
+        addButton.addEventListener("click", () => addToPlaylist(song));
+        
+        songItem.appendChild(songTitle);
+        songItem.appendChild(addButton);
+        songList.appendChild(songItem);
+      });
     }
   }
-  }
+}
 
-  function showBySong() {
-    const genres = musicLibrary.music.genres;
-    const songList = document.getElementById("song-list");
-    const songBtn = document.getElementById("song-btn");
+function showBySong() {
+  const genres = musicLibrary.music.genres;
+  const songList = document.getElementById("song-list");
 
-    if (songBtn) {
-      songList.innerHTML = "";
+  songList.innerHTML = "";
 
-      for (const genre in genres) {
-        const artists = genres[genre].artists;
+  for (const genre in genres) {
+    const artists = genres[genre].artists;
 
-        for (const artist in artists) {
-          const songs = artists[artist];
+    for (const artist in artists) {
+      const songs = artists[artist];
 
-          songs.forEach((song) => {
-            const songItem = document.createElement("p");
-            songItem.textContent = song;
-            songList.appendChild(songItem);
-          });
-        }
-      }
+      songs.forEach((song) => {
+        const songItem = document.createElement("div");
+        songItem.classList.add("song-item");
+        
+        const songTitle = document.createElement("span");
+        songTitle.textContent = song;
+        
+        const addButton = document.createElement("button");
+        addButton.textContent = "+";
+        addButton.addEventListener("click", () => addToPlaylist(song));
+        
+        songItem.appendChild(songTitle);
+        songItem.appendChild(addButton);
+        songList.appendChild(songItem);
+      });
     }
   }
+}
 
-  function showByTrending() {
-    const trendingBtn = document.getElementById("trending-btn");
-
-    if (trendingBtn) {
-      const songList = document.getElementById("song-list");
-      songList.innerHTML = "";
-      getAllSongs();
-    }
-  }
-
+function showByTrending() {
+  const songList = document.getElementById("song-list");
+  songList.innerHTML = "";
+  getAllSongs();
+}
